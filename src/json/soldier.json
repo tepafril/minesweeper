@@ -1,0 +1,22 @@
+{
+  "run": {
+    "spriteSheetWidth": 288,
+    "spriteWidth": 48
+  },
+  "idle": {
+    "spriteSheetWidth": 384,
+    "spriteWidth": 48
+  },
+  "die": {
+    "spriteSheetWidth": 288,
+    "spriteWidth": 48
+  },
+  "jump": {
+    "spriteSheetWidth": 96,
+    "spriteWidth": 48
+  },
+  "crouch": {
+    "spriteSheetWidth": 144,
+    "spriteWidth": 48
+  }
+}
