@@ -2,11 +2,13 @@
 import { defineComponent } from "vue"
 import Soldier from "./Soldier.vue"
 import Tank from "./Tank.vue"
+import Dialog from "./Dialog.vue"
 
 export default defineComponent({
   components: {
     Soldier,
     Tank,
+    Dialog,
   },
   props: {
     delay: {
@@ -32,6 +34,47 @@ export default defineComponent({
 </script>
 <template>
   <div v-if="show">
+    <Dialog
+      :delay="50000"
+      :duration="10000"
+      text="On January 7, 1979, Vietnamese troops seize the Cambodian capital of Phnom Penh, toppling the brutal regime of Pol Pot and his Khmer Rouge."
+    />
+    <Dialog
+      :delay="60000"
+      :duration="10000"
+      text="The United Nations voted to give the resistance movement against communists, which included the Khmer Rouge, a seat in its General Assembly."
+    />
+
+    <Dialog
+      :delay="70000"
+      :duration="10000"
+      text="October 1991 saw eighteen countries signing the Paris Agreements ending the conflict
+in Cambodia and opening the way for Cambodia’s national reconciliation and national
+development."
+    />
+
+    <Dialog
+      :delay="79000 + 1000"
+      :duration="7000"
+      thumbnail="sunmeng"
+      text="Hooray! Victory! We did it! We're the champions! We've won! "
+    />
+    <Dialog :delay="79000 + 8000" :duration="3000" thumbnail="razong" text="Hot pot?" />
+    <Dialog
+      :delay="79000 + 11000"
+      :duration="6000"
+      thumbnail="vuthy"
+      text="Hot pot? How much is it?"
+    />
+    <Dialog :delay="79000 + 17000" :duration="3000" thumbnail="pheng" text="Mehhhhh.....!" />
+    <Dialog
+      :delay="79000 + 20000"
+      :duration="7000"
+      thumbnail="sunmeng"
+      text="After the Hot Pot, Let's clean the minefield...!"
+    />
+    <Dialog :delay="79000 + 27000" :duration="3000" thumbnail="razong" text="Ohh Yeah!" />
+
     <Soldier
       color="green"
       :positionX="625"

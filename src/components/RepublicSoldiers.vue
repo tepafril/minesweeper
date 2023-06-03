@@ -2,11 +2,13 @@
 import { defineComponent } from "vue"
 import Soldier from "./Soldier.vue"
 import Explosion from "./Explosion.vue"
+import Dialog from "./Dialog.vue"
 
 export default defineComponent({
   components: {
     Soldier,
     Explosion,
+    Dialog,
   },
   props: {
     delay: {
@@ -26,11 +28,18 @@ export default defineComponent({
   },
   async mounted() {
     await this.sleep(this.delay)
+    await this.sleep(1000)
     this.show = true
   },
 })
 </script>
 <template>
+  <Dialog
+    :delay="3000"
+    :duration="16000"
+    text="By early 1973, about 85% of Cambodian territory was in the hands of the Khmer Rouge, and the Lon
+    Nol army was almost unable to go on the offensive."
+  />
   <Soldier
     color="green"
     :positionX="120"

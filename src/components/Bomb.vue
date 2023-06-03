@@ -65,15 +65,17 @@ export default defineComponent({
       this.spriteSheet = this.$refs.bombSpriteImage
       this.spriteSheet.style.marginLeft = `${this.positionX}px`
     }
-    this.animateSprite(100, true)
+    this.animateSprite(150, true)
   },
 })
 </script>
 
 <template>
-  <div :class="[show ? '' : 'hidden']">
-    <div class="w-[60px] h-[45px]">
-      <div ref="bombSpriteImage" class="h-full w-full relative bg-bomb"></div>
+  <div>
+    <div :class="[show ? 'scale-100' : 'scale-0']" class="transition-all ease-in-out duration-300">
+      <div class="w-[60px] h-[45px] shadow-xl">
+        <div ref="bombSpriteImage" class="h-full w-full relative bg-bomb"></div>
+      </div>
     </div>
   </div>
 </template>

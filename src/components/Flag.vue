@@ -38,14 +38,19 @@ export default defineComponent({
 
 <template>
   <img
-    v-if="show && this.flag == 'khmer-republic'"
-    class="absolute top-[55%] left-[50%]"
+    :class="show && this.flag == 'khmer-republic' ? 'scale-100' : 'scale-0'"
+    class="transition-all scale-0 ease-in-out duration-300 absolute top-[55%] left-[50%]"
     src="./../assets/sprites/flag/khmer-republic.png"
   />
   <img
-    v-if="show && this.flag == 'khmer-rouge'"
+    :class="show && this.flag == 'khmer-rouge' ? 'scale-100' : 'scale-0'"
     class="absolute top-[55%] left-[50%]"
     src="./../assets/sprites/flag/khmer-rouge.png"
+  />
+  <img
+    :class="show && this.flag == 'kingdom-cambodia' ? 'scale-100' : 'scale-0'"
+    class="transition-all scale-0 ease-in-out duration-300 absolute top-[55%] left-[50%]"
+    src="./../assets/sprites/flag/kingdom-cambodia.png"
   />
 </template>
 

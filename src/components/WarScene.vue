@@ -30,6 +30,7 @@ export default defineComponent({
   <div>
     <Flag :delay="1000" :duration="12000" flag="khmer-republic" />
     <Flag :delay="61000" :duration="16000" flag="khmer-rouge" />
+    <Flag :delay="120000" :duration="16000" flag="kingdom-cambodia" />
     <RepublicSoldiers :delay="0" />
     <KhmerRougeSoldiers :delay="0" />
     <CPPSoldiers :delay="58500" />
