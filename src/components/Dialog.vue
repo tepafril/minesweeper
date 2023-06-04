@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent } from "vue"
+import { defineComponent } from "vue";
 
 export default defineComponent({
   props: {
@@ -23,26 +23,27 @@ export default defineComponent({
   data() {
     return {
       show: false as boolean,
-    }
+    };
   },
   computed: {
     thumbnailSrc() {
-      if (this.thumbnail) return `./../src/assets/sprites/characters/${this.thumbnail}.png`
-      else return null
+      if (this.thumbnail) {
+        return `/sprites/characters/${this.thumbnail}.png`;
+      } else return null;
     },
   },
   methods: {
     sleep(ms: number) {
-      return new Promise((resolve) => setTimeout(resolve, ms))
+      return new Promise((resolve) => setTimeout(resolve, ms));
     },
   },
   async mounted() {
-    await this.sleep(this.delay)
-    this.show = true
-    await this.sleep(this.duration)
-    this.show = false
+    await this.sleep(this.delay);
+    this.show = true;
+    await this.sleep(this.duration);
+    this.show = false;
   },
-})
+});
 </script>
 <template>
   <div
