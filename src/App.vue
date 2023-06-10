@@ -46,9 +46,10 @@ export default defineComponent({
     this.gameManager = GameManager.Instance();
     const audio = this.$refs.khmerRepublic as HTMLAudioElement;
     this.gameManager.init({ audio: audio });
-    const audio2 = new Audio("./audio/completed.mp3");
     document.addEventListener("readystatechange", ($event: any) => {
       if ($event.target.readyState === "complete") {
+        const audio2 = new Audio("./audio/completed.mp3");
+        audio2.play();
         this.gameManager.set("state", StateEnum.Ready);
       }
     });
