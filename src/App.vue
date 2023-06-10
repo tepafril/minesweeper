@@ -46,7 +46,7 @@ export default defineComponent({
     this.gameManager = GameManager.Instance();
     const audio = this.$refs.khmerRepublic as HTMLAudioElement;
     this.gameManager.init({ audio: audio });
-    const audio2 = new Audio("/audio/completed.mp3");
+    const audio2 = new Audio("./audio/completed.mp3");
     console.log(audio2);
     audio2.play();
   },
