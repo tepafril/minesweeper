@@ -78,7 +78,7 @@ export default defineComponent({
 
 <style scoped>
 .play-button {
-  background-image: url("./sprites/ui/play-button.png");
+  background-image: url(./sprites/ui/play-button.png);
 }
 .story-button {
   background-image: url("./sprites/ui/story-button.png");
