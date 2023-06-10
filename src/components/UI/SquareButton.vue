@@ -71,9 +71,9 @@ export default defineComponent({
   background-image: url("./sprites/ui/music-button.png");
 }
 .gmail-button {
-  background-image: url("./sprites/ui/gmail-button.png");
+  background-image: url("~@/sprites/ui/gmail-button.png");
 }
 .linkedin-button {
-  background-image: url("./sprites/ui/linkedin-button.png");
+  background-image: url("@/sprites/ui/linkedin-button.png");
 }
 </style>
