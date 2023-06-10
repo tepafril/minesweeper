@@ -8,19 +8,3 @@ body {
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
 }
-
-.blink {
-  animation: blinker 1s infinite;
-}
-
-@keyframes blinker {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}

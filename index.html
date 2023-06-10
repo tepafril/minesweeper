@@ -10,7 +10,7 @@
     <div id="app"></div>
     <div id="preloading-container">
       <div class="preloading">
-        <div class="text-container">LOADING...</div>
+        <div class="text-container blink">LOADING...</div>
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
@@ -39,6 +39,21 @@
       display: grid;
       place-content: center;
       height: 100%;
+    }
+    .blink {
+      animation: blinker 1s infinite;
+    }
+
+    @keyframes blinker {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
     }
   </style>
 </html>
