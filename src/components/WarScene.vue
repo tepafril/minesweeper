@@ -51,7 +51,7 @@ export default defineComponent({
       class="text-xl font-bold text-white absolute bottom-[5%] left-[47%] underline cursor-pointer blink"
       @click="skip"
     >
-      skip
+      Skip >>
     </div>
   </div>
 </template>

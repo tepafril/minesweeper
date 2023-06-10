@@ -42,6 +42,7 @@ export default defineComponent({
     },
   },
   mounted() {
+    document.getElementById("preloading-container").style.display = "none";
     this.gameManager = GameManager.Instance();
     const audio = this.$refs.khmerRepublic as HTMLAudioElement;
     const bgAudio = this.$refs.bgHappy as HTMLAudioElement;

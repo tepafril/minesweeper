@@ -28,7 +28,7 @@ export default defineComponent({
   computed: {
     thumbnailSrc() {
       if (this.thumbnail) {
-        return `/sprites/characters/${this.thumbnail}.png`;
+        return `./sprites/characters/${this.thumbnail}.png`;
       } else return null;
     },
   },
