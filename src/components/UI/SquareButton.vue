@@ -58,12 +58,11 @@ export default defineComponent({
   <div
     ref="musicButton"
     class="w-[56px] h-[56px] cursor-pointer"
-    :class="`${name}-button`"
     @mouseover="mouseover"
     @mouseleave="mouseleave"
     @mousedown="mousedown"
     @mouseup="mouseover"
-    style="background-image: url('./sprites/ui/music-button.png')"
+    :style="`background-image: url('./sprites/ui/${name}-button.png')`"
   ></div>
 </template>
 
