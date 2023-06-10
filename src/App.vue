@@ -3,6 +3,7 @@ import { defineComponent } from "vue";
 import MovingCloud from "./components/MovingCloud.vue";
 import WarScene from "./components/WarScene.vue";
 import Effect from "./components/UI/Effect.vue";
+import AudioSource from "./components/Base64/AudioSource.vue";
 import { GameManager, StateEnum } from "./models/GameManager";
 
 export default defineComponent({
@@ -10,6 +11,7 @@ export default defineComponent({
     MovingCloud,
     WarScene,
     Effect,
+    AudioSource,
   },
   data() {
     return {
@@ -56,10 +58,10 @@ export default defineComponent({
 <template>
   <div class="h-screen flex items-center justify-center">
     <audio ref="khmerRepublic" autoplay>
-      <source src="./assets/audio/completed.mp3" type="audio/mpeg" />
+      <AudioSource />
     </audio>
     <audio ref="bgHappy" autoplay>
-      <source src="./assets/audio/bg-happy.mp3" type="audio/mpeg" />
+      <AudioSource />
     </audio>
     <div
       ref="container"
@@ -102,20 +104,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style scoped>
-.blink {
-  animation: blinker 1s infinite;
-}
-
-@keyframes blinker {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-</style>
+<style scoped></style>

@@ -48,7 +48,7 @@ export default defineComponent({
     <KhmerRougeSoldiers :delay="0" />
     <CPPSoldiers :delay="58500" />
     <div
-      class="text-xl font-bold text-white absolute bottom-[5%] left-[47%] underline cursor-pointer"
+      class="text-xl font-bold text-white absolute bottom-[5%] left-[47%] underline cursor-pointer blink"
       @click="skip"
     >
       skip
