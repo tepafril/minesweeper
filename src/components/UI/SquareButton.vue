@@ -63,17 +63,8 @@ export default defineComponent({
     @mouseleave="mouseleave"
     @mousedown="mousedown"
     @mouseup="mouseover"
+    style="background-image: url('./sprites/ui/music-button.png')"
   ></div>
 </template>
 
-<style scoped>
-.music-button {
-  background-image: url("./sprites/ui/music-button.png");
-}
-.gmail-button {
-  background-image: url("~@/sprites/ui/gmail-button.png");
-}
-.linkedin-button {
-  background-image: url("@/sprites/ui/linkedin-button.png");
-}
-</style>
+<style scoped></style>
