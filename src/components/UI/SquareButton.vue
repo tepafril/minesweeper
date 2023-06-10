@@ -62,7 +62,7 @@ export default defineComponent({
     @mouseleave="mouseleave"
     @mousedown="mousedown"
     @mouseup="mouseover"
-    :style="`background-image: url('/sprites/ui/${name}-button.png')`"
+    :style="`background-image: url('./sprites/ui/${name}-button.png')`"
   ></div>
 </template>
 
