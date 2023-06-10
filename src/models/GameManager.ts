@@ -1,5 +1,6 @@
 export enum StateEnum {
-  Opening = "opening",
+  Loading = "loading",
+  Ready = "ready",
   Story = "story",
   InGame = "ingame",
 }
@@ -20,7 +21,7 @@ export class GameManager {
     audio: HTMLAudioElement,
   };
 
-  public state: StateEnum = StateEnum.Opening;
+  public state: StateEnum = StateEnum.Loading;
   private mute: boolean = false;
 
   public get(prop: "state" | "mute"): any {

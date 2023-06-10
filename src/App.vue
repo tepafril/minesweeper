@@ -47,12 +47,11 @@ export default defineComponent({
     const audio = this.$refs.khmerRepublic as HTMLAudioElement;
     this.gameManager.init({ audio: audio });
     const audio2 = new Audio("./audio/completed.mp3");
-    document.onreadystatechange = () => {
-      if (document.readyState == "complete") {
-        console.log("Page completed with image and files!");
-        audio2.play();
+    document.addEventListener("readystatechange", ($event: any) => {
+      if ($event.target.readyState === "complete") {
+        this.gameManager.set("state", StateEnum.Ready);
       }
-    };
+    });
   },
 });
 </script>
@@ -71,10 +70,21 @@ export default defineComponent({
           <div class="overflow-hidden relative">
             <div
               class="bg-black text-white text-3xl w-full h-full absolute z-[100] transition-all duration-1000 ease-out"
-              :class="[state == StateEnum.Opening ? 'top-0' : '-top-[1000px]']"
+              :class="[
+                state == StateEnum.Loading || state == StateEnum.Ready
+                  ? 'top-0'
+                  : '-top-[1000px]',
+              ]"
             >
               <div
+                class="select-none h-full grid place-content-center blink transition-all"
+                v-if="state == StateEnum.Loading"
+              >
+                LOADING...
+              </div>
+              <div
                 class="select-none h-full grid place-content-center blink transition-all cursor-pointer"
+                v-if="state == StateEnum.Ready"
                 @click="start"
               >
                 PRESS START
