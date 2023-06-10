@@ -72,8 +72,12 @@ export default defineComponent({
       :class="[show ? 'scale-100' : 'scale-0']"
       class="transition-all ease-in-out duration-300"
     >
-      <div class="w-[60px] h-[45px] shadow-xl">
-        <div ref="bombSpriteImage" class="h-full w-full relative bg-bomb"></div>
+      <div class="w-[60px] h-[45px]">
+        <img
+          class="absolute top-[23%] left-[43%] w-full z-10 animate-scale origin-top"
+          src="/sprites/ui/mine.png"
+        />
+        <!-- <div ref="bombSpriteImage" class="h-full w-full relative bg-bomb"></div> -->
       </div>
     </div>
   </div>
@@ -82,5 +86,21 @@ export default defineComponent({
 <style scoped>
 .bg-bomb {
   background-image: url(./../assets/sprites/bomb.png);
+}
+
+.animate-scale {
+  animation: infiniteTransformScale 3s ease-in-out infinite;
+}
+
+@keyframes infiniteTransformScale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.075);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 </style>

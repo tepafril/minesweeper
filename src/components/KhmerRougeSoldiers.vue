@@ -1,9 +1,9 @@
 <script lang="ts">
-import { defineComponent } from "vue"
-import Soldier from "./Soldier.vue"
-import Bomb from "./Bomb.vue"
-import Explosion from "./Explosion.vue"
-import Dialog from "./Dialog.vue"
+import { defineComponent } from "vue";
+import Soldier from "./Soldier.vue";
+import Bomb from "./Bomb.vue";
+import Explosion from "./Explosion.vue";
+import Dialog from "./Dialog.vue";
 
 export default defineComponent({
   components: {
@@ -21,18 +21,18 @@ export default defineComponent({
   data() {
     return {
       show: false as boolean,
-    }
+    };
   },
   methods: {
     sleep(ms: number) {
-      return new Promise((resolve) => setTimeout(resolve, ms))
+      return new Promise((resolve) => setTimeout(resolve, ms));
     },
   },
   async mounted() {
-    await this.sleep(this.delay)
-    this.show = true
+    await this.sleep(this.delay);
+    this.show = true;
   },
-})
+});
 </script>
 <template>
   <Dialog
@@ -293,23 +293,79 @@ export default defineComponent({
     ]"
     class="absolute bottom-[21%] scale-[150%]"
   />
-  <Explosion :delay="92500 + 1000" :positionX="350" class="absolute bottom-[22%] scale-[150%]" />
-  <Explosion :delay="92000 + 1000" :positionX="360" class="absolute bottom-[22%] scale-[150%]" />
-  <Explosion :delay="91500 + 1000" :positionX="370" class="absolute bottom-[22%] scale-[150%]" />
-  <Explosion :delay="91000 + 1000" :positionX="380" class="absolute bottom-[22%] scale-[150%]" />
-  <Explosion :delay="90500 + 1000" :positionX="390" class="absolute bottom-[22%] scale-[150%]" />
-  <Explosion :delay="90000 + 1000" :positionX="400" class="absolute bottom-[22%] scale-[150%]" />
-  <Explosion :delay="89500 + 1000" :positionX="410" class="absolute bottom-[22%] scale-[150%]" />
-  <Explosion :delay="89000 + 1000" :positionX="420" class="absolute bottom-[22%] scale-[150%]" />
+  <Explosion
+    :delay="92500 + 1000"
+    :positionX="350"
+    class="absolute bottom-[22%] scale-[150%]"
+  />
+  <Explosion
+    :delay="92000 + 1000"
+    :positionX="370"
+    class="absolute bottom-[22%] scale-[150%]"
+  />
+  <Explosion
+    :delay="91500 + 1000"
+    :positionX="390"
+    class="absolute bottom-[22%] scale-[150%]"
+  />
+  <Explosion
+    :delay="91000 + 1000"
+    :positionX="410"
+    class="absolute bottom-[22%] scale-[150%]"
+  />
+  <Explosion
+    :delay="90500 + 1000"
+    :positionX="430"
+    class="absolute bottom-[22%] scale-[150%]"
+  />
+  <Explosion
+    :delay="90000 + 1000"
+    :positionX="450"
+    class="absolute bottom-[22%] scale-[150%]"
+  />
+  <Explosion
+    :delay="89500 + 1000"
+    :positionX="470"
+    class="absolute bottom-[22%] scale-[150%]"
+  />
+  <Explosion
+    :delay="89000 + 1000"
+    :positionX="490"
+    class="absolute bottom-[22%] scale-[150%]"
+  />
 
-  <Bomb :delay="60000 - 1200" class="absolute left-[85%] bottom-[10%] scale-[130%]" />
-  <Bomb :delay="60000 - 1050" class="absolute left-[75%] bottom-[12%] scale-[75%]" />
-  <Bomb :delay="60000 - 900" class="absolute left-[65%] bottom-[3%] scale-[100%]" />
-  <Bomb :delay="60000 - 750" class="absolute left-[55%] bottom-[12%] scale-[100%]" />
-  <Bomb :delay="60000 - 600" class="absolute left-[45%] bottom-[8%] scale-[75%]" />
-  <Bomb :delay="60000 - 450" class="absolute left-[30%] bottom-[10%] scale-[130%]" />
-  <Bomb :delay="60000 - 300" class="absolute left-[20%] bottom-[3%] scale-[85%]" />
-  <Bomb :delay="60000 - 150" class="absolute left-[5%] bottom-[8%] scale-[100%]" />
+  <Bomb
+    :delay="70000 - 1200"
+    class="absolute left-[85%] bottom-[10%] scale-[130%]"
+  />
+  <Bomb
+    :delay="70000 - 1050"
+    class="absolute left-[75%] bottom-[12%] scale-[75%]"
+  />
+  <Bomb
+    :delay="70000 - 900"
+    class="absolute left-[65%] bottom-[3%] scale-[100%]"
+  />
+  <Bomb
+    :delay="70000 - 750"
+    class="absolute left-[55%] bottom-[12%] scale-[100%]"
+  />
+  <Bomb
+    :delay="70000 - 600"
+    class="absolute left-[45%] bottom-[8%] scale-[75%]"
+  />
+  <Bomb
+    :delay="70000 - 450"
+    class="absolute left-[30%] bottom-[10%] scale-[130%]"
+  />
+  <Bomb
+    :delay="70000 - 300"
+    class="absolute left-[20%] bottom-[3%] scale-[85%]"
+  />
+  <Bomb
+    :delay="70000 - 150"
+    class="absolute left-[5%] bottom-[8%] scale-[100%]"
+  />
 
   <Soldier
     color="black"
