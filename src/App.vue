@@ -24,9 +24,6 @@ export default defineComponent({
     },
   },
   methods: {
-    canplay() {
-      console.log("canplay");
-    },
     start() {
       this.gameManager.set("state", StateEnum.Story);
       this.gameManager.assets.audio.play();
@@ -45,11 +42,10 @@ export default defineComponent({
   mounted() {
     this.gameManager = GameManager.Instance();
     const audio = this.$refs.khmerRepublic as HTMLAudioElement;
-    this.gameManager.init({ audio: audio });
+    const bgAudio = this.$refs.bgHappy as HTMLAudioElement;
+    this.gameManager.init({ audio: audio, bgAudio: bgAudio });
     document.addEventListener("readystatechange", ($event: any) => {
       if ($event.target.readyState === "complete") {
-        const audio2 = new Audio("./audio/completed.mp3");
-        audio2.play();
         this.gameManager.set("state", StateEnum.Ready);
       }
     });
@@ -59,12 +55,15 @@ export default defineComponent({
 
 <template>
   <div class="h-screen flex items-center justify-center">
-    <audio @canplay="canplay" ref="khmerRepublic" autoplay>
+    <audio ref="khmerRepublic" autoplay>
       <source src="./assets/audio/completed.mp3" type="audio/mpeg" />
+    </audio>
+    <audio ref="bgHappy" autoplay>
+      <source src="./assets/audio/bg-happy.mp3" type="audio/mpeg" />
     </audio>
     <div
       ref="container"
-      class="w-[927px] h-[700px] border-[#af753b] border-[10px]"
+      class="w-[927px] h-[700px] border-[#af753b] border-[1px] absolute"
     >
       <div class="bord1er-[#412c17] bor1der-[8px]">
         <div class="bor1der-[#b78b2d] bo1rder-[4px]">
@@ -95,7 +94,7 @@ export default defineComponent({
             <MovingCloud />
             <war-scene v-if="state == StateEnum.Story" />
 
-            <Effect v-else :delay="1000" />
+            <Effect v-else :delay="100" />
           </div>
         </div>
       </div>

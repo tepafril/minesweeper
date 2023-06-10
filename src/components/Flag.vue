@@ -49,7 +49,7 @@ export default defineComponent({
   />
   <img
     :class="show && this.flag == 'kingdom-cambodia' ? 'scale-100' : 'scale-0'"
-    class="transition-all scale-0 ease-in-out duration-300 absolute top-[55%] left-[50%] z-[100]"
+    class="transition-all scale-0 ease-in-out duration-300 absolute top-[55%] left-[40%] z-[100]"
     src="./../assets/sprites/flag/kingdom-cambodia.png"
   />
 </template>

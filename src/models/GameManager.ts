@@ -19,6 +19,7 @@ export class GameManager {
 
   public assets: any = {
     audio: HTMLAudioElement,
+    bgAudio: HTMLAudioElement,
   };
 
   public state: StateEnum = StateEnum.Loading;
@@ -38,7 +39,8 @@ export class GameManager {
         break;
     }
   }
-  public init(params: { audio: HTMLAudioElement }) {
+  public init(params: { audio: HTMLAudioElement; bgAudio: HTMLAudioElement }) {
     this.assets.audio = params.audio;
+    this.assets.bgAudio = params.bgAudio;
   }
 }
