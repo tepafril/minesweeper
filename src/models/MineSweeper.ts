@@ -66,7 +66,7 @@ export class Tile {
     public readonly isRightEdge: boolean,
     public readonly rowIndex: number,
     public readonly colIndex: number,
-    private readonly _board: Board
+    public readonly _board: Board
   ) {
     this.isUnveiled = false;
   }

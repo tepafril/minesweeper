@@ -7,9 +7,6 @@ export default defineComponent({
   components: {
     Tile,
   },
-  props: {
-    //
-  },
   data() {
     return {
       board: {} as Board,
@@ -33,10 +30,10 @@ export default defineComponent({
   <div class="w-full h-[700px]">
     <div class="flex items-center justify-center h-full">
       <div>
-        <template v-for="(col, i) in board.tiles" :key="i">
+        <template v-for="col in board.tiles" :key="col.colIndex">
           <div class="p-0 m-0 flex">
-            <template v-for="(row, j) in col" :key="j">
-              <Tile :modelValue="board.tiles[i][j]" />
+            <template v-for="tile in col" :key="tile.rowIndex">
+              <Tile :modelValue="board.tiles[tile.colIndex][tile.rowIndex]" />
             </template>
           </div>
         </template>
