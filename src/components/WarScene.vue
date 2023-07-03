@@ -6,6 +6,7 @@ import KhmerRougeSoldiers from "./KhmerRougeSoldiers.vue";
 import CPPSoldiers from "./CPPSoldiers.vue";
 import Flag from "./Flag.vue";
 import { GameManager, StateEnum } from "./../models/GameManager";
+import { sleep } from "../models/Functions";
 
 export default defineComponent({
   components: {
@@ -27,13 +28,16 @@ export default defineComponent({
     skip() {
       this.gameManager.set("state", StateEnum.InGame);
       this.gameManager.assets.audio.pause();
-      this.gameManager.assets.bgAudio.play();
+      this.gameManager.assets.audio.currentTime = 179;
+      this.gameManager.assets.audio.play();
     },
   },
   async mounted() {
     this.gameManager = GameManager.Instance();
-    await this.sleep(170000);
+    await sleep(170000);
     this.gameManager.set("state", StateEnum.InGame);
+    this.gameManager.assets.audio.pause();
+    this.gameManager.assets.audio.currentTime = 179;
     this.gameManager.assets.audio.play();
   },
 });
@@ -48,10 +52,10 @@ export default defineComponent({
     <KhmerRougeSoldiers :delay="0" />
     <CPPSoldiers :delay="58500" />
     <div
-      class="text-xl font-bold text-white absolute bottom-[5%] left-[47%] underline cursor-pointer blink"
+      class="text-lg text-white absolute bottom-[1%] right-[1%] hover:underline cursor-pointer"
       @click="skip"
     >
-      Skip >>
+      skip >
     </div>
   </div>
 </template>

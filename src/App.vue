@@ -5,6 +5,7 @@ import WarScene from "./components/WarScene.vue";
 import Effect from "./components/UI/Effect.vue";
 import AudioSource from "./components/Base64/AudioSource.vue";
 import { GameManager, StateEnum } from "./models/GameManager";
+import Board from "./components/Game/Board.vue";
 
 export default defineComponent({
   components: {
@@ -12,6 +13,7 @@ export default defineComponent({
     WarScene,
     Effect,
     AudioSource,
+    Board,
   },
   data() {
     return {
@@ -71,7 +73,7 @@ export default defineComponent({
       <div class="bord1er-[#412c17] bor1der-[8px]">
         <div class="bor1der-[#b78b2d] bo1rder-[4px]">
           <div class="overflow-hidden relative">
-            <div
+            <!-- <div
               class="bg-black text-white text-3xl w-full h-full absolute z-[100] transition-all duration-1000 ease-out"
               :class="[
                 state == StateEnum.Loading || state == StateEnum.Ready
@@ -92,12 +94,13 @@ export default defineComponent({
               >
                 PRESS START
               </div>
-            </div>
-            <img class="w-full relative" src="./assets/background.jpg" />
-            <MovingCloud />
-            <war-scene v-if="state == StateEnum.Story" />
+            </div> -->
+            <!-- <img class="w-full relative" src="./assets/background.jpg" />
+            <MovingCloud /> -->
 
-            <Effect v-else :delay="100" />
+            <!-- <war-scene v-if="state == StateEnum.Story" /> -->
+            <!-- <Effect v-else :delay="100" /> -->
+            <Board />
           </div>
         </div>
       </div>

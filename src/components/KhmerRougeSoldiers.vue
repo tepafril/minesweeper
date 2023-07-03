@@ -4,6 +4,7 @@ import Soldier from "./Soldier.vue";
 import Bomb from "./Bomb.vue";
 import Explosion from "./Explosion.vue";
 import Dialog from "./Dialog.vue";
+import { sleep } from "../models/Functions";
 
 export default defineComponent({
   components: {
@@ -23,13 +24,9 @@ export default defineComponent({
       show: false as boolean,
     };
   },
-  methods: {
-    sleep(ms: number) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    },
-  },
+  methods: {},
   async mounted() {
-    await this.sleep(this.delay);
+    await sleep(this.delay);
     this.show = true;
   },
 });

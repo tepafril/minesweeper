@@ -1,8 +1,9 @@
 <script lang="ts">
-import { defineComponent } from "vue"
-import Soldier from "./Soldier.vue"
-import Tank from "./Tank.vue"
-import Dialog from "./Dialog.vue"
+import { defineComponent } from "vue";
+import Soldier from "./Soldier.vue";
+import Tank from "./Tank.vue";
+import Dialog from "./Dialog.vue";
+import { sleep } from "../models/Functions";
 
 export default defineComponent({
   components: {
@@ -19,18 +20,14 @@ export default defineComponent({
   data() {
     return {
       show: false as boolean,
-    }
+    };
   },
-  methods: {
-    sleep(ms: number) {
-      return new Promise((resolve) => setTimeout(resolve, ms))
-    },
-  },
+  methods: {},
   async mounted() {
-    await this.sleep(this.delay)
-    this.show = true
+    await sleep(this.delay);
+    this.show = true;
   },
-})
+});
 </script>
 <template>
   <div v-if="show">
@@ -59,21 +56,36 @@ development."
       thumbnail="sunmeng"
       text="Hooray! Victory! We did it! We're the champions! We've won! "
     />
-    <Dialog :delay="79000 + 8000" :duration="3000" thumbnail="razong" text="Hot pot?" />
+    <Dialog
+      :delay="79000 + 8000"
+      :duration="3000"
+      thumbnail="razong"
+      text="Hot pot?"
+    />
     <Dialog
       :delay="79000 + 11000"
       :duration="6000"
       thumbnail="vuthy"
       text="Hot pot? How much is it?"
     />
-    <Dialog :delay="79000 + 17000" :duration="3000" thumbnail="pheng" text="Mehhhhh.....!" />
+    <Dialog
+      :delay="79000 + 17000"
+      :duration="3000"
+      thumbnail="pheng"
+      text="Mehhhhh.....!"
+    />
     <Dialog
       :delay="79000 + 20000"
       :duration="7000"
       thumbnail="sunmeng"
       text="After the Hot Pot, Let's clean the minefield...!"
     />
-    <Dialog :delay="79000 + 27000" :duration="3000" thumbnail="razong" text="Ohh Yeah!" />
+    <Dialog
+      :delay="79000 + 27000"
+      :duration="3000"
+      thumbnail="razong"
+      text="Ohh Yeah!"
+    />
 
     <Soldier
       color="green"

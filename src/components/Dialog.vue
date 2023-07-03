@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
+import { sleep } from "../models/Functions";
 
 export default defineComponent({
   props: {
@@ -32,15 +33,11 @@ export default defineComponent({
       } else return null;
     },
   },
-  methods: {
-    sleep(ms: number) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    },
-  },
+  methods: {},
   async mounted() {
-    await this.sleep(this.delay);
+    await sleep(this.delay);
     this.show = true;
-    await this.sleep(this.duration);
+    await sleep(this.duration);
     this.show = false;
   },
 });
@@ -48,7 +45,7 @@ export default defineComponent({
 <template>
   <div
     :class="[show ? 'scale-100 translate-y-0' : 'scale-0 -translate-y-20']"
-    class="duration-300 ease-in-out transition transform bg-white text-center py-6 px-10 absolute top-[5%] border-solid border-gray-900 text-stroke left-[17%] w-2/3 rounded-3xl border-8 text-3xl flex align-middle"
+    class="duration-300 ease-in-out transition transform bg-white text-center py-6 px-10 absolute top-[5%] border-solid border-gray-900 font-medium left-[17%] w-2/3 rounded-3xl border-8 text-3xl flex align-middle"
   >
     <img v-if="thumbnailSrc" :src="thumbnailSrc" alt="" class="pr-8" />
     <div class="grid place-content-center">{{ text }}</div>

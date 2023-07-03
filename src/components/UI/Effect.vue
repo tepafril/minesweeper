@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
+import { sleep } from "../../models/Functions";
 import Button from "./Button.vue";
 import SquareButton from "./SquareButton.vue";
 
@@ -60,7 +61,7 @@ export default defineComponent({
     },
   },
   async mounted() {
-    await this.sleep(this.delay);
+    await sleep(this.delay);
     this.show = true;
   },
 });

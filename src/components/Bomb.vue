@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
+import { sleep } from "../models/Functions";
 
 export default defineComponent({
   components: {},
@@ -50,12 +51,9 @@ export default defineComponent({
         }
       }, speed);
     },
-    sleep(ms: number) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    },
   },
   async mounted() {
-    await this.sleep(this.delay);
+    await sleep(this.delay);
     this.show = true;
     if (this.positionX) {
       this.spriteSheet = this.$refs.bombSpriteImage;

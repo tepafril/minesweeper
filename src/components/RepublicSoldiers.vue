@@ -1,8 +1,9 @@
 <script lang="ts">
-import { defineComponent } from "vue"
-import Soldier from "./Soldier.vue"
-import Explosion from "./Explosion.vue"
-import Dialog from "./Dialog.vue"
+import { defineComponent } from "vue";
+import Soldier from "./Soldier.vue";
+import Explosion from "./Explosion.vue";
+import Dialog from "./Dialog.vue";
+import { sleep } from "../models/Functions";
 
 export default defineComponent({
   components: {
@@ -19,19 +20,15 @@ export default defineComponent({
   data() {
     return {
       show: false as boolean,
-    }
+    };
   },
-  methods: {
-    sleep(ms: number) {
-      return new Promise((resolve) => setTimeout(resolve, ms))
-    },
-  },
+  methods: {},
   async mounted() {
-    await this.sleep(this.delay)
-    await this.sleep(1000)
-    this.show = true
+    await sleep(this.delay);
+    await sleep(1000);
+    this.show = true;
   },
-})
+});
 </script>
 <template>
   <Dialog
@@ -67,7 +64,11 @@ export default defineComponent({
     ]"
     class="absolute bottom-[21%] scale-[150%]"
   />
-  <Explosion :delay="42000" :positionX="200" class="absolute bottom-[22%] scale-[150%]" />
+  <Explosion
+    :delay="42000"
+    :positionX="200"
+    class="absolute bottom-[22%] scale-[150%]"
+  />
   <Soldier
     color="green"
     :positionX="190"
@@ -109,7 +110,11 @@ export default defineComponent({
     ]"
     class="absolute bottom-[21%] scale-[150%]"
   />
-  <Explosion :delay="40000" :positionX="230" class="absolute bottom-[22%] scale-[150%]" />
+  <Explosion
+    :delay="40000"
+    :positionX="230"
+    class="absolute bottom-[22%] scale-[150%]"
+  />
   <Soldier
     color="green"
     :positionX="270"
@@ -175,7 +180,11 @@ export default defineComponent({
     ]"
     class="absolute bottom-[21%] scale-[150%]"
   />
-  <Explosion :delay="31000" :positionX="430" class="absolute bottom-[22%] scale-[150%]" />
+  <Explosion
+    :delay="31000"
+    :positionX="430"
+    class="absolute bottom-[22%] scale-[150%]"
+  />
   <Soldier
     color="green"
     :positionX="610"
@@ -189,7 +198,11 @@ export default defineComponent({
     ]"
     class="absolute bottom-[21%] scale-[150%]"
   />
-  <Explosion :delay="30000" :positionX="480" class="absolute bottom-[22%] scale-[150%]" />
+  <Explosion
+    :delay="30000"
+    :positionX="480"
+    class="absolute bottom-[22%] scale-[150%]"
+  />
   <Soldier
     color="green"
     :positionX="625"
@@ -203,5 +216,9 @@ export default defineComponent({
     ]"
     class="absolute bottom-[21%] scale-[150%]"
   />
-  <Explosion :delay="28000" :positionX="500" class="absolute bottom-[22%] scale-[150%]" />
+  <Explosion
+    :delay="28000"
+    :positionX="500"
+    class="absolute bottom-[22%] scale-[150%]"
+  />
 </template>

@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
+import { sleep } from "../models/Functions";
 
 export default defineComponent({
   components: {},
@@ -22,15 +23,11 @@ export default defineComponent({
       show: false as boolean,
     };
   },
-  methods: {
-    sleep(ms: number) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    },
-  },
+  methods: {},
   async mounted() {
-    await this.sleep(this.delay);
+    await sleep(this.delay);
     this.show = true;
-    await this.sleep(this.duration);
+    await sleep(this.duration);
     this.show = false;
   },
 });
