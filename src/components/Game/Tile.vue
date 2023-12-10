@@ -8,7 +8,7 @@ export default defineComponent({
   components: { Bomb },
   props: {
     modelValue: {
-      type: Object as PropType<Tile>,
+      type: Object as PropType<any>,
       required: true,
     },
     clickLock: {
