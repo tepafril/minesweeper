@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { sleep } from "../../models/Functions";
+import { GameManager, StateEnum } from "../../models/GameManager";
 import Button from "./Button.vue";
 import SquareButton from "./SquareButton.vue";
 
@@ -21,6 +22,7 @@ export default defineComponent({
       spriteSheet: null as null | HTMLElement,
       position: 100 as number,
       show: false as boolean,
+      gameManager: {} as GameManager,
     };
   },
   computed: {
@@ -32,6 +34,30 @@ export default defineComponent({
     },
   },
   methods: {
+    mailTo() {
+      document.location.href = "mailto:tepafril@gmail.com";
+    },
+    linkTo() {
+      window.open(
+        "https://www.linkedin.com/in/afril-tep-56b404b1/",
+        "_blank",
+        ""
+      );
+    },
+    backToStory() {
+      this.gameManager.assets.audio.currentTime = 0;
+      this.gameManager.assets.audio.play();
+      this.gameManager.set("state", StateEnum.Story);
+    },
+    toCredits() {
+      this.gameManager.set("state", StateEnum.Credits);
+    },
+    toGame() {
+      this.gameManager.set("state", StateEnum.InGame);
+    },
+    mute(bool: boolean) {
+      this.gameManager.set("mute", bool);
+    },
     animateSprite(speed: number, loop = true as boolean) {
       this.spriteSheet = this.$refs.bombSpriteImage;
       let position = this.sprite.spriteWidth;
@@ -61,6 +87,7 @@ export default defineComponent({
     },
   },
   async mounted() {
+    this.gameManager = GameManager.Instance();
     await sleep(this.delay);
     this.show = true;
   },
@@ -74,51 +101,62 @@ export default defineComponent({
   >
     <div>
       <img
-        class="absolute top-[23%] left-[43%] w-[14%] z-10 animate-scale"
+        class="pointer-events-none absolute top-[23%] left-[43%] w-[14%] z-10 animate-scale"
         src="/sprites/ui/mine.png"
       />
       <img
-        class="absolute top-[2%] left-[30%] w-[40%] z-0 animate-rotate transition-all"
+        class="pointer-events-none absolute top-[2%] left-[30%] w-[40%] z-0 animate-rotate transition-all"
         src="/sprites/ui/effect.png"
       />
       <img
-        class="absolute top-[5%] left-[10%] w-4/5 z-10"
+        class="pointer-events-none absolute top-[6.5%] left-[10%] w-4/5 z-10"
         src="/sprites/ui/title.png"
       />
       <img
-        class="absolute top-[33%] left-[34%] w-[32%] z-10"
+        class="pointer-events-none absolute top-[33%] left-[34%] w-[32%] z-10"
         src="/sprites/ui/frame.png"
       />
     </div>
 
-    <SquareButton name="music" class="absolute left-[3%] bottom-[5%]" />
-    <SquareButton name="linkedin" class="absolute right-[3%] bottom-[5%]" />
-    <SquareButton name="gmail" class="absolute right-[10%] bottom-[5%]" />
-    <Button name="play" class="absolute right-[42%] bottom-[45%] z-50" />
-    <Button name="story" class="absolute right-[42%] bottom-[33%] z-50" />
-    <Button name="credit" class="absolute right-[42%] bottom-[21%] z-50" />
+    <SquareButton
+      name="music"
+      class="absolute left-[3%] bottom-[5%]"
+      @disable="mute(true)"
+      @enable="mute(false)"
+    />
+    <SquareButton
+      disableNone
+      name="linkedin"
+      class="absolute right-[3%] bottom-[5%]"
+      @click="linkTo"
+    />
+    <SquareButton
+      disableNone
+      name="gmail"
+      class="absolute right-[10%] bottom-[5%]"
+      @click="mailTo"
+    />
+    <Button
+      name="play"
+      class="absolute right-[42%] bottom-[45%] z-50"
+      @click="toGame"
+    />
+    <Button
+      name="story"
+      class="absolute right-[42%] bottom-[33%] z-50"
+      @click="backToStory"
+    />
+    <Button
+      name="credit"
+      class="absolute right-[42%] bottom-[21%] z-50"
+      @click="toCredits"
+    />
   </div>
 </template>
 
 <style scoped>
 .bg-bomb {
   background-image: url(./../assets/sprites/bomb.png);
-}
-
-.animate-rotate {
-  animation: infiniteRotation 10s linear infinite;
-}
-
-@keyframes infiniteRotation {
-  0% {
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    transform: rotate(180deg) scale(1.5);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
 }
 
 .animate-scale {

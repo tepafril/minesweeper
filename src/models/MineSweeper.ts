@@ -1,12 +1,18 @@
 export class Board {
   public tiles: Tile[][];
   public minePositions: Array<{ x: number; y: number }> = [];
+  private _numberOfRandomizeMines: number;
+  public onWin: () => {};
+
+  unveilCount: number = 0;
 
   public constructor(
     public readonly numberOfRow: number,
     public readonly numberOfColumn: number,
-    public numberOfMine: number
-  ) {}
+    public readonly numberOfMine: number
+  ) {
+    this._numberOfRandomizeMines = numberOfMine;
+  }
 
   public init() {
     this.tiles = [];
@@ -26,7 +32,8 @@ export class Board {
           isRightEdge,
           j,
           i,
-          this
+          this,
+          false
         );
 
         this.tiles[i][j] = tile;
@@ -37,7 +44,7 @@ export class Board {
   }
 
   public randomizeMines() {
-    this.numberOfMine--;
+    this._numberOfRandomizeMines--;
     const x = Math.floor(Math.random() * this.numberOfColumn);
     const y = Math.floor(Math.random() * this.numberOfRow);
     if (
@@ -48,8 +55,18 @@ export class Board {
       this.minePositions.push({ x: x, y: y });
       this.tiles[x][y].setMine();
     }
-    if (this.numberOfMine > 0) {
+    if (this._numberOfRandomizeMines > 0) {
       this.randomizeMines();
+    }
+  }
+
+  public async checkIfAllMinesCleared() {
+    this.unveilCount++;
+    if (
+      this.numberOfColumn * this.numberOfRow - this.numberOfMine ==
+      this.unveilCount
+    ) {
+      await this.onWin();
     }
   }
 }
@@ -66,7 +83,8 @@ export class Tile {
     public readonly isRightEdge: boolean,
     public readonly rowIndex: number,
     public readonly colIndex: number,
-    public readonly _board: Board
+    public readonly _board: Board,
+    public isFlag: boolean
   ) {
     this.isUnveiled = false;
   }
@@ -103,6 +121,22 @@ export class Tile {
   }
 
   public unveil() {
+    if (this.isFlag) return false;
+    if (this.isMine) {
+      this.isUnveiled = true;
+      return true;
+    } else {
+      this.recursivelyUnveil(this.rowIndex, this.colIndex);
+      return false;
+    }
+  }
+
+  public toggleFlag() {
+    this.isFlag = !this.isFlag;
+  }
+
+  public unveilOnlyMe() {
+    this.isUnveiled = true;
     this.recursivelyUnveil(this.rowIndex, this.colIndex);
   }
 
@@ -123,5 +157,6 @@ export class Tile {
         this._board.tiles[colIndex][rowIndex - 1].unveil();
       }
     }
+    this._board.checkIfAllMinesCleared();
   }
 }

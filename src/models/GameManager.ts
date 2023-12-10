@@ -2,7 +2,13 @@ export enum StateEnum {
   Loading = "loading",
   Ready = "ready",
   Story = "story",
+  Menu = "Menu",
   InGame = "ingame",
+  Credits = "credits",
+  GameOverExploded = "gameover1",
+  GameOverUnveilAll = "gameover2",
+  GameOverRetry = "gameover3",
+  GameOverWinning = "gameover4",
 }
 
 export class GameManager {
@@ -32,10 +38,14 @@ export class GameManager {
     switch (prop) {
       case "state":
         this.state = value;
-        console.log("state", this.state);
         break;
       case "mute":
         this.mute = value;
+        if (this.mute) {
+          this.assets.audio.volume = 0;
+        } else {
+          this.assets.audio.volume = 1;
+        }
         break;
     }
   }

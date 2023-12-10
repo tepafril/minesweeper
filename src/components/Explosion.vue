@@ -57,20 +57,24 @@ export default defineComponent({
     },
   },
   async mounted() {
-    await sleep(this.delay);
-    this.show = true;
-    if (this.positionX) {
-      this.spriteSheet = this.$refs.explosionSpriteImage;
-      this.spriteSheet.style.marginLeft = `${this.positionX}px`;
+    try {
+      await sleep(this.delay);
+      this.show = true;
+      if (this.positionX) {
+        this.spriteSheet = this.$refs.explosionSpriteImage;
+        this.spriteSheet.style.marginLeft = `${this.positionX}px`;
+      }
+      this.animateSprite(100, false);
+    } catch (e: any) {
+      //
     }
-    this.animateSprite(100, false);
   },
 });
 </script>
 
 <template>
   <div :class="[show ? '' : 'hidden']">
-    <div class="w-[110px] h-[97px]">
+    <div class="w-[20px] h-[20px]">
       <div
         ref="explosionSpriteImage"
         class="h-full w-full relative bg-explosion"

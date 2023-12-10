@@ -59,131 +59,191 @@ export default defineComponent({
   },
   methods: {
     animateSprite(speed: number, loop = true as boolean) {
-      this.spriteSheet = this.$refs.soilderSpriteImage;
-      let position = this.sprite.spriteWidth;
-      const diff = this.sprite.spriteWidth;
+      try {
+        this.spriteSheet = this.$refs.soilderSpriteImage;
+        let position = this.sprite.spriteWidth;
+        const diff = this.sprite.spriteWidth;
 
-      this.actionAnimationInterval = setInterval(() => {
-        if (this.spriteSheet) {
-          this.spriteSheet.style.backgroundPosition = `-${position}px 0px`;
-          if (position >= this.sprite.spriteSheetWidth) {
-            if (!loop) {
-              clearInterval(this.actionAnimationInterval);
-              this.actionAnimationInterval = null;
-              this.spriteSheet.style.backgroundPosition = `${this.sprite.spriteWidth}px 0px`;
+        this.actionAnimationInterval = setInterval(() => {
+          if (this.spriteSheet) {
+            this.spriteSheet.style.backgroundPosition = `-${position}px 0px`;
+            if (position >= this.sprite.spriteSheetWidth) {
+              if (!loop) {
+                clearInterval(this.actionAnimationInterval);
+                this.actionAnimationInterval = null;
+                this.spriteSheet.style.backgroundPosition = `${this.sprite.spriteWidth}px 0px`;
+              } else {
+                position = this.sprite.spriteWidth;
+              }
+            } else if (position == this.sprite.spriteSheetWidth) {
             } else {
-              position = this.sprite.spriteWidth;
+              position = position + diff;
             }
-          } else if (position == this.sprite.spriteSheetWidth) {
-          } else {
-            position = position + diff;
           }
-        }
-      }, speed);
+        }, speed);
+      } catch (e: any) {
+        //
+      }
     },
     async delay(ms: number) {
       await sleep(ms);
       this.clearAnimation();
     },
     moveSprite(speed = 100) {
-      this.spriteSheet = this.$refs.soilderSpriteImage;
-      const diff = 1;
+      try {
+        this.spriteSheet = this.$refs.soilderSpriteImage;
+        const diff = 1;
 
-      this.moveAnimationInterval = setInterval(() => {
-        if (this.spriteSheet) {
-          if (this.direction == "right") {
-            this.position += diff;
-          } else {
-            this.position -= diff;
+        this.moveAnimationInterval = setInterval(() => {
+          if (this.spriteSheet) {
+            if (this.direction == "right") {
+              this.position += diff;
+            } else {
+              this.position -= diff;
+            }
+            this.spriteSheet.style.marginLeft = `${this.position}px`;
           }
-          this.spriteSheet.style.marginLeft = `${this.position}px`;
-        }
-      }, speed);
+        }, speed);
+      } catch (e: any) {
+        //
+      }
     },
     setAction(action: string) {
-      this.spriteSheet = this.$refs.soilderSpriteImage;
-      this.spriteSheet.classList.remove(
-        `bg-soldier-${this.color}-${this.action}`
-      );
-      this.spriteSheet.classList.add(`bg-soldier-${this.color}-${action}`);
-      this.action = action;
+      try {
+        this.spriteSheet = this.$refs.soilderSpriteImage;
+        this.spriteSheet.classList.remove(
+          `bg-soldier-${this.color}-${this.action}`
+        );
+        this.spriteSheet.classList.add(`bg-soldier-${this.color}-${action}`);
+        this.action = action;
+      } catch (e: any) {
+        //
+      }
     },
     clearAnimation() {
-      if (this.actionAnimationInterval) {
-        clearInterval(this.actionAnimationInterval);
-        this.actionAnimationInterval = null;
-      }
-      if (this.moveAnimationInterval) {
-        clearInterval(this.moveAnimationInterval);
-        this.moveAnimationInterval = null;
-      }
-      if (this.sprite) {
-        this.spriteSheet = this.$refs.soilderSpriteImage;
-        this.spriteSheet.style.backgroundPosition = `-${this.sprite.spriteWidth}px 0px`;
+      try {
+        if (this.actionAnimationInterval) {
+          clearInterval(this.actionAnimationInterval);
+          this.actionAnimationInterval = null;
+        }
+        if (this.moveAnimationInterval) {
+          clearInterval(this.moveAnimationInterval);
+          this.moveAnimationInterval = null;
+        }
+        if (this.spriteSheet?.style) {
+          this.spriteSheet = this.$refs.soilderSpriteImage;
+          this.spriteSheet.style.backgroundPosition = `-${this.sprite.spriteWidth}px 0px`;
+        }
+      } catch (e: any) {
+        //
       }
     },
     run() {
-      this.shooting = false;
-      this.setAction("run");
-      this.animateSprite(100);
-      this.moveSprite(50);
+      try {
+        this.shooting = false;
+        this.setAction("run");
+        this.animateSprite(100);
+        this.moveSprite(50);
+      } catch (e: any) {
+        //
+      }
     },
     runShoot() {
-      this.shooting = true;
-      this.setAction("run");
-      this.animateSprite(100);
-      this.moveSprite(50);
+      try {
+        this.shooting = true;
+        this.setAction("run");
+        this.animateSprite(100);
+        this.moveSprite(50);
+      } catch (e: any) {
+        //
+      }
     },
     die() {
-      this.shooting = false;
-      this.setAction("die");
-      this.animateSprite(100, false);
+      try {
+        this.shooting = false;
+        this.setAction("die");
+        this.animateSprite(100, false);
+      } catch (e: any) {
+        //
+      }
     },
     crouch() {
-      this.shooting = false;
-      this.setAction("crouch");
-      this.animateSprite(300, false);
+      try {
+        this.shooting = false;
+        this.setAction("crouch");
+        this.animateSprite(300, false);
+      } catch (e: any) {
+        //
+      }
     },
     crouchShoot() {
-      this.shooting = true;
-      this.setAction("crouch");
-      this.animateSprite(300, false);
+      try {
+        this.shooting = true;
+        this.setAction("crouch");
+        this.animateSprite(300, false);
+      } catch (e: any) {
+        //
+      }
     },
     idle() {
-      this.shooting = false;
-      this.setAction("idle");
-      this.animateSprite(100);
+      try {
+        this.shooting = false;
+        this.setAction("idle");
+        this.animateSprite(100);
+      } catch (e: any) {
+        //
+      }
     },
     idleShoot() {
-      this.shooting = true;
-      this.setAction("idle");
-      this.animateSprite(100);
+      try {
+        this.shooting = true;
+        this.setAction("idle");
+        this.animateSprite(100);
+      } catch (e: any) {
+        //
+      }
     },
     jump() {
-      this.shooting = false;
-      this.setAction("jump");
-      this.animateSprite(100);
+      try {
+        this.shooting = false;
+        this.setAction("jump");
+        this.animateSprite(100);
+      } catch (e: any) {
+        //
+      }
     },
     turnLeft() {
-      this.direction = "left";
-      this.spriteSheet = this.$refs.soilderSpriteImage;
-      this.spriteSheet.style.transform = "scaleX(-1)";
+      try {
+        this.direction = "left";
+        this.spriteSheet = this.$refs.soilderSpriteImage;
+        this.spriteSheet.style.transform = "scaleX(-1)";
+      } catch (e: any) {
+        //
+      }
     },
     turnRight() {
-      this.direction = "right";
-      this.spriteSheet = this.$refs.soilderSpriteImage;
-      this.spriteSheet.style.transform = "scaleX(1)";
+      try {
+        this.direction = "right";
+        this.spriteSheet = this.$refs.soilderSpriteImage;
+        this.spriteSheet.style.transform = "scaleX(1)";
+      } catch (e: any) {
+        //
+      }
     },
     async activate(actions: any) {
-      if (this.inc < actions.length) {
-        const func = actions[this.inc].actionName as string;
-        const duration = actions[this.inc].duration as number;
-        this[func]();
-        if (duration > 0) {
-          await this.delay(duration);
+      try {
+        if (this.inc < actions.length) {
+          const func = actions[this.inc].actionName as string;
+          const duration = actions[this.inc].duration as number;
+          this[func]();
+          if (duration > 0) {
+            await this.delay(duration);
+          }
+          this.inc++;
+          await this.activate(actions);
         }
-        this.inc++;
-        await this.activate(actions);
+      } catch (e: any) {
+        //
       }
     },
   },
@@ -204,7 +264,7 @@ export default defineComponent({
       <div ref="soilderSpriteImage" class="h-full w-full relative">
         <img
           src="./../assets/sprites/flash.png"
-          class="absolute right-0 z-50"
+          class="pointer-events-none absolute right-0 z-50"
           :class="[
             shooting ? 'blink' : 'hidden',
             action == 'crouch' ? 'bottom-5' : 'bottom-6',

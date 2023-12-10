@@ -33,17 +33,17 @@ export default defineComponent({
   <div v-if="show">
     <Dialog
       :delay="50000"
-      :duration="10000"
+      :duration="10000 + 5000"
       text="On January 7, 1979, Vietnamese troops seize the Cambodian capital of Phnom Penh, toppling the brutal regime of Pol Pot and his Khmer Rouge."
     />
     <Dialog
-      :delay="60000"
+      :delay="60000 + 5000"
       :duration="10000"
       text="The United Nations voted to give the resistance movement against communists, which included the Khmer Rouge, a seat in its General Assembly."
     />
 
     <Dialog
-      :delay="70000"
+      :delay="70000 + 5000"
       :duration="10000"
       text="October 1991 saw eighteen countries signing the Paris Agreements ending the conflict
 in Cambodia and opening the way for Cambodia’s national reconciliation and national
@@ -51,37 +51,37 @@ development."
     />
 
     <Dialog
-      :delay="79000 + 1000"
+      :delay="79000 + 1000 + 5000"
       :duration="7000"
       thumbnail="sunmeng"
       text="Hooray! Victory! We did it! We're the champions! We've won! "
     />
     <Dialog
-      :delay="79000 + 8000"
+      :delay="79000 + 8000 + 5000"
       :duration="3000"
       thumbnail="razong"
       text="Hot pot?"
     />
     <Dialog
-      :delay="79000 + 11000"
+      :delay="79000 + 11000 + 5000"
       :duration="6000"
       thumbnail="vuthy"
       text="Hot pot? How much is it?"
     />
     <Dialog
-      :delay="79000 + 17000"
+      :delay="79000 + 17000 + 5000"
       :duration="3000"
       thumbnail="pheng"
       text="Mehhhhh.....!"
     />
     <Dialog
-      :delay="79000 + 20000"
+      :delay="79000 + 20000 + 5000"
       :duration="7000"
       thumbnail="sunmeng"
       text="After the Hot Pot, Let's clean the minefield...!"
     />
     <Dialog
-      :delay="79000 + 27000"
+      :delay="79000 + 27000 + 5000"
       :duration="3000"
       thumbnail="razong"
       text="Ohh Yeah!"
@@ -305,7 +305,7 @@ development."
       :key="i"
       :positionX="780"
       :actions="[
-        { actionName: 'idle', duration: 56000 + 4000 * i },
+        { actionName: 'idle', duration: 56000 + 4000 + 5000 * i },
         { actionName: 'run', duration: 12000 },
       ]"
       class="absolute bottom-[23%] scale-[120%] z-0"

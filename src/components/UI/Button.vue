@@ -72,6 +72,7 @@ export default defineComponent({
     @mouseleave="mouseleave"
     @mousedown="mousedown"
     @mouseup="mouseup"
+    @click="$emit('click')"
     :style="`background-image: url(./sprites/ui/${name}-button.png)`"
   ></div>
 </template>

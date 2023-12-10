@@ -8,6 +8,10 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    disableNone: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -40,14 +44,16 @@ export default defineComponent({
     mousedown() {
       this.toggle = !this.toggle;
       this.spriteSheet = this.$refs.musicButton;
-      if (this.toggle) {
+      if (this.toggle || this.disableNone) {
         this.spriteSheet.style.backgroundPosition = `-${
           this.sprite.spriteWidth * 2
         }px 0px`;
+        this.$emit("enable");
       } else {
         this.spriteSheet.style.backgroundPosition = `-${
           this.sprite.spriteWidth * 3
         }px 0px`;
+        this.$emit("disable");
       }
     },
   },
@@ -62,6 +68,7 @@ export default defineComponent({
     @mouseleave="mouseleave"
     @mousedown="mousedown"
     @mouseup="mouseover"
+    @click="$emit('click')"
     :style="`background-image: url('./sprites/ui/${name}-button.png')`"
   ></div>
 </template>

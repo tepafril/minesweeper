@@ -1,33 +1,57 @@
 <script lang="ts">
-import { defineComponent } from "vue"
+import { defineComponent } from "vue";
 
-export default defineComponent({})
+export default defineComponent({});
 </script>
 
 <template>
   <img
     id="slow-cloud-1"
-    class="w-full opacity-70 absolute top-0"
+    class="pointer-events-none w-full opacity-70 absolute top-0"
     src="./../assets/slow-cloud.png"
   />
   <img
     id="slow-cloud-2"
-    class="w-full opacity-70 absolute top-0"
+    class="pointer-events-none w-full opacity-70 absolute top-0"
     src="./../assets/slow-cloud.png"
   />
   <img
     id="slow-cloud-3"
-    class="w-full opacity-70 absolute top-0"
+    class="pointer-events-none w-full opacity-70 absolute top-0"
     src="./../assets/slow-cloud.png"
   />
 
-  <img id="normal-cloud-1" class="w-full absolute top-0" src="./../assets/normal-cloud.png" />
-  <img id="normal-cloud-2" class="w-full absolute top-0" src="./../assets/normal-cloud.png" />
-  <img id="normal-cloud-3" class="w-full absolute top-0" src="./../assets/normal-cloud.png" />
+  <img
+    id="normal-cloud-1"
+    class="pointer-events-none w-full absolute top-0"
+    src="./../assets/normal-cloud.png"
+  />
+  <img
+    id="normal-cloud-2"
+    class="pointer-events-none w-full absolute top-0"
+    src="./../assets/normal-cloud.png"
+  />
+  <img
+    id="normal-cloud-3"
+    class="pointer-events-none w-full absolute top-0"
+    src="./../assets/normal-cloud.png"
+  />
 
-  <img id="fast-cloud-1" class="w-full absolute top-0" src="./../assets/fast-cloud.png" />
-  <img id="fast-cloud-2" class="w-full absolute top-0" src="./../assets/fast-cloud.png" />
-  <img id="fast-cloud-3" class="w-full absolute top-0" src="./../assets/fast-cloud.png" />
+  <img
+    id="fast-cloud-1"
+    class="pointer-events-none w-full absolute top-0"
+    src="./../assets/fast-cloud.png"
+  />
+  <img
+    id="fast-cloud-2"
+    class="pointer-events-none w-full absolute top-0"
+    src="./../assets/fast-cloud.png"
+  />
+  <img
+    id="fast-cloud-3"
+    class="pointer-events-none w-full absolute top-0"
+    src="./../assets/fast-cloud.png"
+  />
 </template>
 
 <style scoped>
