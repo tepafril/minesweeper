@@ -34,27 +34,31 @@ export default defineComponent({
   },
   methods: {
     animateSprite(speed: number, loop = true as boolean) {
-      this.spriteSheet = this.$refs.tankSpriteImage;
-      let position = this.sprite.spriteWidth;
-      const diff = this.sprite.spriteWidth;
+      try {
+        this.spriteSheet = this.$refs.tankSpriteImage;
+        let position = this.sprite.spriteWidth;
+        const diff = this.sprite.spriteWidth;
 
-      this.actionAnimationInterval = setInterval(() => {
-        if (this.spriteSheet) {
-          this.spriteSheet.style.backgroundPosition = `-${position}px 0px`;
-          if (position >= this.sprite.spriteSheetWidth) {
-            if (!loop) {
-              clearInterval(this.actionAnimationInterval);
-              this.actionAnimationInterval = null;
-              this.spriteSheet.style.backgroundPosition = `${this.sprite.spriteWidth}px 0px`;
+        this.actionAnimationInterval = setInterval(() => {
+          if (this.spriteSheet) {
+            this.spriteSheet.style.backgroundPosition = `-${position}px 0px`;
+            if (position >= this.sprite.spriteSheetWidth) {
+              if (!loop) {
+                clearInterval(this.actionAnimationInterval);
+                this.actionAnimationInterval = null;
+                this.spriteSheet.style.backgroundPosition = `${this.sprite.spriteWidth}px 0px`;
+              } else {
+                position = this.sprite.spriteWidth;
+              }
+            } else if (position == this.sprite.spriteSheetWidth) {
             } else {
-              position = this.sprite.spriteWidth;
+              position = position + diff;
             }
-          } else if (position == this.sprite.spriteSheetWidth) {
-          } else {
-            position = position + diff;
           }
-        }
-      }, speed);
+        }, speed);
+      } catch (e: any) {
+        //
+      }
     },
     async delay(ms: number) {
       await sleep(ms);
@@ -64,71 +68,99 @@ export default defineComponent({
       return new Promise((resolve) => setTimeout(resolve, ms));
     },
     moveSprite(speed = 100) {
-      this.spriteSheet = this.$refs.tankSpriteImage;
-      const diff = 1;
+      try {
+        this.spriteSheet = this.$refs.tankSpriteImage;
+        const diff = 1;
 
-      this.moveAnimationInterval = setInterval(() => {
-        if (this.spriteSheet) {
-          if (this.direction == "right") {
-            this.position -= diff;
-          } else {
-            this.position += diff;
+        this.moveAnimationInterval = setInterval(() => {
+          if (this.spriteSheet) {
+            if (this.direction == "right") {
+              this.position -= diff;
+            } else {
+              this.position += diff;
+            }
+            this.spriteSheet.style.marginLeft = `${this.position}px`;
           }
-          this.spriteSheet.style.marginLeft = `${this.position}px`;
-        }
-      }, speed);
+        }, speed);
+      } catch (e: any) {
+        //
+      }
     },
     clearAnimation() {
-      if (this.actionAnimationInterval) {
-        clearInterval(this.actionAnimationInterval);
-        this.actionAnimationInterval = null;
-      }
-      if (this.moveAnimationInterval) {
-        clearInterval(this.moveAnimationInterval);
-        this.moveAnimationInterval = null;
-      }
-      if (this.sprite) {
-        this.spriteSheet = this.$refs.tankSpriteImage;
-        this.spriteSheet.style.backgroundPosition = `-${this.sprite.spriteWidth}px 0px`;
+      try {
+        if (this.actionAnimationInterval) {
+          clearInterval(this.actionAnimationInterval);
+          this.actionAnimationInterval = null;
+        }
+        if (this.moveAnimationInterval) {
+          clearInterval(this.moveAnimationInterval);
+          this.moveAnimationInterval = null;
+        }
+        if (this.sprite) {
+          this.spriteSheet = this.$refs.tankSpriteImage;
+          this.spriteSheet.style.backgroundPosition = `-${this.sprite.spriteWidth}px 0px`;
+        }
+      } catch (e: any) {
+        //
       }
     },
     run() {
-      this.animateSprite(100);
-      this.moveSprite(10);
+      try {
+        this.animateSprite(100);
+        this.moveSprite(10);
+      } catch (e: any) {
+        //
+      }
     },
     idle() {
       //
     },
     turnLeft() {
-      this.direction = "left";
-      this.spriteSheet = this.$refs.tankSpriteImage;
-      this.spriteSheet.style.transform = "scaleX(1)";
+      try {
+        this.direction = "left";
+        this.spriteSheet = this.$refs.tankSpriteImage;
+        this.spriteSheet.style.transform = "scaleX(1)";
+      } catch (e: any) {
+        //
+      }
     },
     turnRight() {
-      this.direction = "right";
-      this.spriteSheet = this.$refs.tankSpriteImage;
-      this.spriteSheet.style.transform = "scaleX(-1)";
+      try {
+        this.direction = "right";
+        this.spriteSheet = this.$refs.tankSpriteImage;
+        this.spriteSheet.style.transform = "scaleX(-1)";
+      } catch (e: any) {
+        //
+      }
     },
     async activate(actions: any) {
-      if (this.inc < actions.length) {
-        const func = actions[this.inc].actionName as string;
-        const duration = actions[this.inc].duration as number;
-        this[func]();
-        if (duration > 0) {
-          await this.delay(duration);
+      try {
+        if (this.inc < actions.length) {
+          const func = actions[this.inc].actionName as string;
+          const duration = actions[this.inc].duration as number;
+          this[func]();
+          if (duration > 0) {
+            await this.delay(duration);
+          }
+          this.inc++;
+          await this.activate(actions);
         }
-        this.inc++;
-        await this.activate(actions);
+      } catch (e: any) {
+        //
       }
     },
   },
   async mounted() {
-    if (this.positionX) {
-      this.spriteSheet = this.$refs.tankSpriteImage;
-      this.position = this.positionX;
-      this.spriteSheet.style.marginLeft = `${this.position}px`;
+    try {
+      if (this.positionX) {
+        this.spriteSheet = this.$refs.tankSpriteImage;
+        this.position = this.positionX;
+        this.spriteSheet.style.marginLeft = `${this.position}px`;
+      }
+      await this.activate(this.actions);
+    } catch (e: any) {
+      //
     }
-    await this.activate(this.actions);
   },
 });
 </script>
