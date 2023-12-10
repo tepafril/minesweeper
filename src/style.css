@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "Dresden Elektronik";
-  src: url("fonts/Dresden-Elektronik.ttf") format("truetype");
+  src: url("/fonts/Dresden-Elektronik.ttf") format("truetype");
 }
 
 body {
