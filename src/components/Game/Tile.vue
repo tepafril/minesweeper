@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { sleep } from "../../models/Functions";
-import { Tile } from "../../models/MineSweeper";
+// import { Tile } from "../../models/MineSweeper";
 import Bomb from "../../components/Bomb.vue";
 
 export default defineComponent({
